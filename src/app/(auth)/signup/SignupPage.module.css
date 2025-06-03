@@ -1,5 +1,6 @@
 .container {
   height: 100%;
+  background-color: var(--beige);
   background-image: url("/assets/images/LOGO.png");
   background-position: 50% 70px;
   background-repeat: no-repeat;
@@ -12,29 +13,19 @@
 }
 
 .form {
-  width: calc(100% - 60px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+  width: calc(100% - 60px);
 }
 
 .form input {
   height: 52px;
   border-radius: 15px;
-  font-size: 20px;
   padding: 20px;
-  color: var(--brown);
-}
-
-.form button {
-  height: 52px;
-  border: none;
-  border-radius: 15px;
-  color: var(--brown);
-  background-color: var(--green-light);
   font-size: 20px;
-  font-weight: bold;
+  color: var(--brown);
 }
 
 .form div {
@@ -42,9 +33,19 @@
   flex-direction: column;
 }
 
+.form button {
+  height: 52px;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--brown);
+  background-color: var(--green-light);
+}
+
 .form span {
-  margin-left: 10px;
   margin-top: 5px;
+  padding-left: 10px;
 }
 
 .form a {
@@ -52,34 +53,36 @@
 }
 
 .o {
-  height: 1px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: calc(100% - 80px);
   background-color: var(--brown);
   opacity: 0.2;
+  height: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .o span {
-  width: 20px;
-  background-color: var(--beige);
-  text-align: center;
   font-weight: bold;
+  background-color: var(--beige);
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .googleBtn {
-  width: calc(100% - 60px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
   height: 52px;
-  background-color: var(--white);
+  width: calc(100% - 60px);
   color: #000000;
+  background-color: var(--white);
   border-radius: 15px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 30px;
 }
