@@ -3,5 +3,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 40px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text h1 {
+  font-family: var(--font-title);
+  font-weight: normal;
+  font-size: 40px;
+  color: var(--green);
+}
+
+.avatar {
+  position: relative;
+  width: 50%;
+  aspect-ratio: 1/1;
+  border: 4px double var(--brown);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.signoutBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  opacity: 0.7;
+  color: var(--beige);
+  width: 40%;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
