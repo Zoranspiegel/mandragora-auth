@@ -28,6 +28,14 @@
   color: var(--brown);
 }
 
+.errors {
+  width: calc(100% - 60px);
+  align-self: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: red;
+}
+
 .form div {
   display: flex;
   flex-direction: column;

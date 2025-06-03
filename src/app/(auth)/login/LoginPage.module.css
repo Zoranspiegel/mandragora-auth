@@ -51,6 +51,14 @@
   font-weight: bold;
 }
 
+.errors {
+  width: calc(100% - 60px);
+  align-self: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: red;
+}
+
 .o {
   height: 1px;
   display: flex;
