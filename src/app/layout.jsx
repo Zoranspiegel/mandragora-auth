@@ -1,4 +1,5 @@
 import { Fleur_De_Leah, Thasadith } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 
 const fleurDeLeah = Fleur_De_Leah({
@@ -21,7 +22,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${fleurDeLeah.variable} ${thasadith.variable}`}>{children}</body>
+      <body className={`${fleurDeLeah.variable} ${thasadith.variable}`}>
+        <SessionProvider>
+          {children}
+        </SessionProvider>
+      </body>
     </html>
   );
 }

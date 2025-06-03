@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import styles from "./LoginPage.module.css";
 import { userInputSchema } from "@/lib/schemas/user.schema";
+import GoogleBtn from "@/components/GoogleBtn";
 
 const loginDataInitialState = { email: "", password: "" };
 
@@ -74,10 +75,7 @@ export default function LoginPage() {
       <div className={styles.o}>
         <span>o</span>
       </div>
-      <Link href="/home" className={styles.googleBtn}>
-        <FcGoogle fontSize="30px" />
-        Google
-      </Link>
+      <GoogleBtn />
     </div>
   );
 }
