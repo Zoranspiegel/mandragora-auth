@@ -6,6 +6,7 @@ import { useState } from "react";
 import styles from "./LoginPage.module.css";
 import { userInputSchema } from "@/lib/schemas/user.schema";
 import GoogleBtn from "@/components/GoogleBtn";
+import { signIn } from "next-auth/react";
 
 const loginDataInitialState = { email: "", password: "" };
 
@@ -29,7 +30,7 @@ export default function LoginPage() {
     const { data, error, success } = userInputSchema.safeParse(loginData);
 
     if (success) {
-      alert("SUCCESS");
+      signIn("credentials", data);
     } else {
       const errors = error.errors.map((error) => error.message);
       setErrors((prevState) => [...prevState, ...errors]);
