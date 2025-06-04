@@ -1,17 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import styles from "./LoginPage.module.css";
-import { userInputSchema } from "@/lib/schemas/user.schema";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
 import GoogleBtn from "@/components/GoogleBtn";
-import { signIn } from "next-auth/react";
+import { userInputSchema } from "@/lib/schemas/user.schema";
+import styles from "./LoginPage.module.css";
 
-const loginDataInitialState = { username: "", password: "" };
+const loginDataInitialState = { name: "", email: "", password: "" };
 
 export default function LoginPage() {
+  const router = useRouter();
   const [loginData, setLoginData] = useState(loginDataInitialState);
   const [errors, setErrors] = useState([]);
+  const { status } = useSession();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/home");
+    }
+  }, [status]);
 
   function handleChange(e) {
     setLoginData((prevState) => {
@@ -29,7 +38,7 @@ export default function LoginPage() {
     const { data, error, success } = userInputSchema.safeParse(loginData);
 
     if (success) {
-      signIn("credentials", data);
+      signIn("credentials", { ...data, redirect: false });
     } else {
       const errors = error.errors.map((error) => error.message);
       setErrors((prevState) => [...prevState, ...errors]);
@@ -41,9 +50,16 @@ export default function LoginPage() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
-          name="username"
+          name="name"
           placeholder="Nombre de usuario..."
-          value={loginData.username}
+          value={loginData.name}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="email"
+          placeholder="Email..."
+          value={loginData.email}
           onChange={handleChange}
         />
         <div>

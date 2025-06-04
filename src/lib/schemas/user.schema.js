@@ -2,8 +2,12 @@ import { z } from "zod";
 
 export const userInputSchema = z
   .object({
-    username: z.string(),
-    password: z.string(),
+    name: z.string().min(1, "Nombre de usuario: Campo requerido."),
+    email: z
+      .string()
+      .min(1, "Email: Campo requerido.")
+      .email("Email: Email Inválido."),
+    password: z.string({ required_error: "Contraseña: Campo requerido." }),
     confirm: z
       .string()
       .min(5, "Contraseña: Al menos 5 caracteres.")

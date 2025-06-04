@@ -1,16 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./SignupPage.module.css";
-import { useState } from "react";
-import { userInputSchema } from "@/lib/schemas/user.schema";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import GoogleBtn from "@/components/GoogleBtn";
+import { userInputSchema } from "@/lib/schemas/user.schema";
+import styles from "./SignupPage.module.css";
 
-const loginDataInitialState = { username: "", password: "", confirm: "" };
+const loginDataInitialState = {
+  name: "",
+  email: "",
+  password: "",
+  confirm: "",
+};
 
 export default function SignupPage() {
+  const router = useRouter();
   const [loginData, setLoginData] = useState(loginDataInitialState);
   const [errors, setErrors] = useState([]);
+  const { status } = useSession();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/home");
+    }
+  }, [status]);
 
   function handleChange(e) {
     setLoginData((prevState) => {
@@ -39,9 +54,16 @@ export default function SignupPage() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
-          name="username"
+          name="name"
           placeholder="Nombre de usuario..."
-          value={loginData.username}
+          value={loginData.name}
+          onChange={handleChange}
+        ></input>
+        <input
+          type="text"
+          name="email"
+          placeholder="Email..."
+          value={loginData.email}
           onChange={handleChange}
         ></input>
         <input

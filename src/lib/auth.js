@@ -7,20 +7,25 @@ export const { handlers } = NextAuth({
     Google,
     Credentials({
       credentials: {
+        name: {},
         email: {},
         password: {},
       },
       authorize: (credentials) => {
-        const emailMock = "admin@admin.com";
-        const passwordMock = "Q1w2e3?";
-        console.log(credentials);
+        const userMock = {
+          name: "Zoran",
+          email: "admin@admin.com",
+          password: "Q1w2e3?",
+        };
+
         if (
-          credentials.email === emailMock &&
-          credentials.password === passwordMock
+          credentials.name === userMock.name &&
+          credentials.email === userMock.email &&
+          credentials.password === userMock.password
         ) {
-          return { email: credentials.email };
+          return userMock;
         } else {
-          throw new Error("Invalid Credentials");
+          return null;
         }
       },
     }),
