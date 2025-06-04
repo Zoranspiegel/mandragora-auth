@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const userInputSchema = z
   .object({
-    email: z.string().email("Email: No es un email válido."),
+    username: z.string(),
     password: z.string(),
     confirm: z
       .string()

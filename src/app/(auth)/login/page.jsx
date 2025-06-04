@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import styles from "./LoginPage.module.css";
 import { userInputSchema } from "@/lib/schemas/user.schema";
 import GoogleBtn from "@/components/GoogleBtn";
 import { signIn } from "next-auth/react";
 
-const loginDataInitialState = { email: "", password: "" };
+const loginDataInitialState = { username: "", password: "" };
 
 export default function LoginPage() {
   const [loginData, setLoginData] = useState(loginDataInitialState);
@@ -42,9 +41,9 @@ export default function LoginPage() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
-          name="email"
-          placeholder="Email..."
-          value={loginData.email}
+          name="username"
+          placeholder="Nombre de usuario..."
+          value={loginData.username}
           onChange={handleChange}
         />
         <div>

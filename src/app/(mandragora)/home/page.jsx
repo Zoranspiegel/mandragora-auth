@@ -3,8 +3,8 @@
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import styles from "./HomePage.module.css";
 import Image from "next/image";
+import styles from "./HomePage.module.css";
 
 export default function HomePage() {
   const { data: session, status } = useSession();
@@ -30,11 +30,15 @@ export default function HomePage() {
         <h2>{session.user.name}</h2>
       </div>
       <div className={styles.avatar}>
-        {session.user.image && (
+        {session.user.image ? (
           <Image src={session.user.image} alt="avatar" fill />
+        ) : (
+          <div className={styles.noavatar}>{session.user.name[0]}</div>
         )}
       </div>
-      <button onClick={() => signOut()} className={styles.signoutBtn}>Sign Out</button>
+      <button onClick={() => signOut()} className={styles.signoutBtn}>
+        Sign Out
+      </button>
     </div>
   );
 }

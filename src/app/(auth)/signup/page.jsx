@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import styles from "./SignupPage.module.css";
-import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import { userInputSchema } from "@/lib/schemas/user.schema";
 import GoogleBtn from "@/components/GoogleBtn";
 
-const loginDataInitialState = { email: "", password: "", confirm: "" };
+const loginDataInitialState = { username: "", password: "", confirm: "" };
 
 export default function SignupPage() {
   const [loginData, setLoginData] = useState(loginDataInitialState);
@@ -40,9 +39,9 @@ export default function SignupPage() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
-          name="email"
-          placeholder="Email..."
-          value={loginData.email}
+          name="username"
+          placeholder="Nombre de usuario..."
+          value={loginData.username}
           onChange={handleChange}
         ></input>
         <input
